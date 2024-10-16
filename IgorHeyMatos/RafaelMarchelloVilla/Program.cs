@@ -1,5 +1,6 @@
 using RafaelMarchelloVilla.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.InteropServices;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDataContext>();
@@ -21,23 +22,33 @@ app.MapGet("/api/funcionario/listar", ([FromServices] AppDataContext ctx) =>
     return Results.NotFound();
 });
 
-app.MapPost("/api/folha/cadastrar", ([FromBody] Folha folha, [FromServices] AppDataContext ctx2) =>
+app.MapPost("/api/folha/cadastrar", ([FromBody] Folha folha, [FromServices] AppDataContext ctx) =>
 {
-    ctx2.Folhas.Add(folha);
-    ctx2.SaveChanges();
+    ctx.Folhas.Add(folha);
+    ctx.SaveChanges();
     return Results.Created("", folha);
 });
 
 
 
-// app.MapGet("/api/folha/listar", ([FromServices] AppDataContext ctx) =>
-// {
-//     if (ctx.Folhas.Any())
-//     {
-//         return Results.Ok(ctx.Folhas.ToList());
-//     }
-//     return Results.NotFound();
-// });
+app.MapGet("/api/folha/listar", ([FromServices] AppDataContext ctx) =>
+{
+    if (ctx.Folhas.Any())
+    {
+        return Results.Ok(ctx.Folhas.ToList());
+    }
+    return Results.NotFound();
+});
+
+app.MapGet("/api/folha/buscar/{cpf}/{mes}/{ano}", ([FromRoute] string cpf, [FromRoute] int mes, [FromRoute] int ano, [FromServices] AppDataContext ctx) =>
+{
+    Folha? folha = ctx.Folhas.Find(cpf, mes, ano);
+    if (folha is null)
+    {
+        return Results.NotFound();
+    }
+    return Results.Ok();
+});
 
 
 
