@@ -132,3 +132,4 @@ C:\Dev-Software-Visual-A2\IgorHeyMatos\RafaelMarchelloVilla\obj\Debug\net8.0\ref
 C:\Dev-Software-Visual-A2\IgorHeyMatos\RafaelMarchelloVilla\obj\Debug\net8.0\RafaelMarchelloVilla.pdb
 C:\Dev-Software-Visual-A2\IgorHeyMatos\RafaelMarchelloVilla\obj\Debug\net8.0\RafaelMarchelloVilla.genruntimeconfig.cache
 C:\Dev-Software-Visual-A2\IgorHeyMatos\RafaelMarchelloVilla\obj\Debug\net8.0\ref\RafaelMarchelloVilla.dll
+C:\Dev-Software-Visual-A2\IgorHeyMatos\RafaelMarchelloVilla\obj\Debug\net8.0\RafaelMarchelloVilla.sourcelink.json

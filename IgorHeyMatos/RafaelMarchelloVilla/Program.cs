@@ -12,26 +12,32 @@ app.MapPost("/api/funcionario/cadastrar", ([FromBody] Funcionario funcionario, [
     return Results.Created("", funcionario);
 });
 
-app.MapGet("/api/funcionario/listar", ([FromServices] AppDataContext ctx) =>{
-    if(ctx.Funcionarios.Any()){
+app.MapGet("/api/funcionario/listar", ([FromServices] AppDataContext ctx) =>
+{
+    if (ctx.Funcionarios.Any())
+    {
         return Results.Ok(ctx.Funcionarios.ToList());
     }
     return Results.NotFound();
 });
 
-app.MapPost("/api/folha/cadastrar", ([FromBody] Folha folha, [FromServices] AppDataContext ctx) =>
+app.MapPost("/api/folha/cadastrar", ([FromBody] Folha folha, [FromServices] AppDataContext ctx2) =>
 {
-    ctx.Folhas.Add(folha);
-    ctx.SaveChanges();
+    ctx2.Folhas.Add(folha);
+    ctx2.SaveChanges();
     return Results.Created("", folha);
 });
 
-app.MapGet("/api/folha/listar", ([FromServices] AppDataContext ctx) =>{
-    if(ctx.Folhas.Any()){
-        return Results.Ok(ctx.Folhas.ToList());
-    }
-    return Results.NotFound();
-});
+
+
+// app.MapGet("/api/folha/listar", ([FromServices] AppDataContext ctx) =>
+// {
+//     if (ctx.Folhas.Any())
+//     {
+//         return Results.Ok(ctx.Folhas.ToList());
+//     }
+//     return Results.NotFound();
+// });
 
 
 

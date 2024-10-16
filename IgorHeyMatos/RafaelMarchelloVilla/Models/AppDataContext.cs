@@ -13,3 +13,4 @@ public class AppDataContext : DbContext
         optionsBuilder.UseSqlite("Data Source=igorheymatos_rafaelmarchellovilla.db");
     }
 }
+
